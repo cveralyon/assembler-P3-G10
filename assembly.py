@@ -13,7 +13,9 @@ def partida_lista (inst):
 #archivo=open('p3-ej_incorrecto.ass','r')
 #archivo=open('p3F_1Corr.ass','r')
 #archivo=open('p3F_1v2Corr.ass','r')
-archivo=open('p3F_2inCorr.ass','r')
+#archivo=open('p3F_2inCorr.ass','r')
+#archivo=open('p3_1-correccion1.ass','r')
+archivo=open('p3_1-correccion2.ass','r')
 
 auxA=0
 a=''
@@ -541,9 +543,9 @@ elif(codebool==False and databool==False):
                     val=True
                 elif a=='B' and b=='A':
                     val=True
-                elif a=='A' and (b=='1' or b=='0'):
+                elif a=='A' and (b.isdigit()):
                     val=True
-                elif a=='B' and (b=='1' or b=='0'):
+                elif a=='B' and (b.isdigit()):
                     val=True
             elif a_par==1 and b_par==0:
                 if b=='NULL':
@@ -620,23 +622,23 @@ elif(codebool==False and databool==False):
                     val=True
                 elif a=='A' and b=='B':
                     val=True
-        elif (op=='JMP' and (a_par+b_par==0) and ((((a in modulos)==True) and (b=='NULL')) or ((a[0] == '#') and a[1]!='#'))):
+        elif (op=='JMP' and (a_par+b_par==0) and ((((a in modulos)==True) and (b=='NULL')) or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))):
             val=True
-        elif op=='JEQ' and a_par+b_par==0 and (((a in modulos)==True and b=='NULL') or ((a[0] == '#') and a[1]!='#')):
+        elif op=='JEQ' and a_par+b_par==0 and ((((a in modulos)==True and b=='NULL') or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))):
             val=True
-        elif op=='JNE' and a_par+b_par==0 and (((a in modulos)==True and b=='NULL') or ((a[0] == '#') and a[1]!='#')):
+        elif op=='JNE' and a_par+b_par==0 and ((((a in modulos)==True and b=='NULL') or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))):
             val=True
-        elif op=='JGT' and a_par+b_par==0 and (((a in modulos)==True and b=='NULL') or ((a[0] == '#') and a[1]!='#')):
+        elif op=='JGT' and a_par+b_par==0 and ((((a in modulos)==True and b=='NULL') or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))):
             val=True
-        elif op=='JLT' and a_par+b_par==0 and (((a in modulos)==True and b=='NULL') or ((a[0] == '#') and a[1]!='#')):
+        elif op=='JLT' and a_par+b_par==0 and ((((a in modulos)==True and b=='NULL') or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))):
             val=True
-        elif op=='JGE' and a_par+b_par==0 and (((a in modulos)==True and b=='NULL') or ((a[0] == '#') and a[1]!='#')):
+        elif op=='JGE' and a_par+b_par==0 and ((((a in modulos)==True and b=='NULL') or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))):
             val=True
-        elif op=='JLE' and a_par+b_par==0 and (((a in modulos)==True and b=='NULL') or ((a[0] == '#') and a[1]!='#')):
+        elif op=='JLE' and a_par+b_par==0 and ((((a in modulos)==True and b=='NULL') or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))):
             val=True
-        elif op=='JCR' and a_par+b_par==0 and (((a in modulos)==True and b=='NULL') or ((a[0] == '#') and a[1]!='#')):
+        elif op=='JCR' and a_par+b_par==0 and ((((a in modulos)==True and b=='NULL') or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))):
             val=True
-        elif op=='JOV' and a_par+b_par==0 and (((a in modulos)==True and b=='NULL') or ((a[0] == '#') and a[1]!='#')):
+        elif op=='JOV' and a_par+b_par==0 and ((((a in modulos)==True and b=='NULL') or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))):
             val=True
         elif op=='CALL' and a_par+b_par==0 and ((a in modulos)==True and b=='NULL'):
             val=True
