@@ -7,10 +7,13 @@ def partida_lista (inst):
             break
     return i
 
-
-archivo=open('problema2.ass','r')
+#archivo=open('problema1.ass','r')
+#archivo=open('problema2.ass','r')
 #archivo=open('p3-ej_correcto.ass','r')
-#archivo=open('p3F_2inCorr.ass','r')
+#archivo=open('p3-ej_incorrecto.ass','r')
+#archivo=open('p3F_1Corr.ass','r')
+#archivo=open('p3F_1v2Corr.ass','r')
+archivo=open('p3F_2inCorr.ass','r')
 
 auxA=0
 a=''
