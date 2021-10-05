@@ -10,7 +10,7 @@ def partida_lista (inst):
 #archivo=open('p3F_1.ass','r')
 #archivo=open('problema1.ass','r')
 
-archivo=open('p3F_2inCorr.ass','r')
+archivo=open('problema2.ass','r')
 
 auxA=0
 a=''
@@ -24,7 +24,8 @@ data={}
 instruccion=[]
 modulos=[]
 for f in archivo:
-    f=f.strip()
+    f = f.strip()
+    f = f.strip('\n')
     #print(f)
     try:
         if('DATA' in f) and paso1!=True:
@@ -65,7 +66,8 @@ for f in archivo:
                         modulos.append((f.strip().strip('\n'))[:-1])
     except:
         f = f.strip('\n')
-        print(f'La instrucción {f} no existe')
+        if(f!=''):
+            print(f'La instrucción {f} no existe')
            
 archivo.close()
 
@@ -75,6 +77,8 @@ ex_call=False
 if(codebool==True and databool==True):   
        
     for inst in instruccion:
+        inst = inst.strip()
+        inst = inst.strip('\n')
         exp=False
         try:
             if (',' in inst)==True:
@@ -103,7 +107,8 @@ if(codebool==True and databool==True):
                     b='NULL'
         except:
             exp=True
-            print(f'La instrucción {inst} no existe')
+            if(inst!=''):
+                print(f'La instrucción {inst} no existe')
             
         a_par=0
         b_par=0
@@ -353,8 +358,7 @@ if(codebool==True and databool==True):
         elif op=='POP' and a_par+b_par==0 and (a=='A' or a=='B') and b=='NULL':
             val=True
             
-
-        if val==False and exp==False:
+        if (val==False and exp==False) and (inst!=''):
             print(f'La instrucción {inst} no existe')
             validacion=1
 
@@ -390,7 +394,8 @@ elif(codebool==False and databool==False):
                     b='NULL'
         except:
             exp=True
-            print(f'La instrucción {inst} no existe')
+            if (inst!=''):
+                print(f'La instrucción {inst} no existe')
             
         a_par=0
         b_par=0
@@ -641,7 +646,7 @@ elif(codebool==False and databool==False):
             val=True
             
 
-        if val==False and exp==False:
+        if (val==False and exp==False) and (inst!=''):
             print(f'La instrucción {inst} no existe')
             validacion=1
 

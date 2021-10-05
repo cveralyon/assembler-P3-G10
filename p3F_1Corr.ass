@@ -3,6 +3,7 @@ DATA:
   n 5
   res 0
   aux 0
+
 CODE:
 siguiente:
   MOV B,(lista)
@@ -14,11 +15,13 @@ siguiente:
   MOV (aux),A
   MOV A,B
   MOV B,(aux)
+
 comparar:
   SUB A,B
   CMP A,(res)
   JLE revisar
   MOV (res),A
+  
 revisar:
   MOV A,(n)
   SUB A,1

@@ -5,7 +5,6 @@ DATA:
     auxi 0
     auxb 0
     pp 0
-
 CODE:
 siguiente:
     MOV B,(inicio1)
@@ -15,7 +14,6 @@ siguiente:
     MOV (auxb),B
     CMP A,0
     JEQ move
-
 mult:
     MOV B,A
     MOV A,(auxi)
@@ -25,7 +23,6 @@ mult:
     MOV A,B
     ADD A,(auxb)
     JMP mult
-
 move:
     MOV A,(pp)
     ADD A,B

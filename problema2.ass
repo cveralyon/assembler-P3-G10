@@ -4,7 +4,6 @@ DATA:
   res 0
   aux1 0
   aux2 0
-
 CODE:
 siguiente:
   MOV A,(inicio)
