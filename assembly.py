@@ -9,56 +9,74 @@ def partida_lista (inst):
 
 #archivo=open('p3F_1.ass','r')
 #archivo=open('problema1.ass','r')
-archivo=open('problema2.ass','r')
+archivo=open('p3F_1v2.ass','r')
 a=0
 data={}
 instruccion=[]
 modulos=[]
 for f in archivo:
-    print(f)
-    if f.find('CODE')!=-1:
-        a=1
-    if a==0 and f.find('DATA')==-1:
-        j=partida_lista(f)
-        variable=f.split(' ')
-        if len(f)>1:
-            data[variable[j]]=(variable[j+1].strip('\n'))
-        
-    else:
-        if f.find(':')==-1 and f!='':
-            instruccion.append(f.strip('\n'))
-           
-        elif f.find(':')!=-1 and f.find('CODE')==-1 and f.find('DATA')==-1: 
-            modulos.append((f.strip('\n'))[:-1])
+    #print(f)
+    try:
+        if f.find('CODE')!=-1:
+            a=1
+        if a==0 and f.find('DATA')==-1:
+            j=partida_lista(f)
+            variable=f.split(' ')
+            if len(f)>1:
+                data[variable[j]]=(variable[j+1].strip('\n'))
+                if(data[variable[j]][0]=='#' and data[variable[j]][1]=='#'):
+                    f = f.strip('\n')
+                    print(f'La instrucción {f} no existe')
+                    
+        else:
+            if f.find(':')==-1 and f!='':                
+                instruccion.append(f.strip('\n'))
+            
+            elif f.find(':')!=-1 and f.find('CODE')==-1 and f.find('DATA')==-1:
+                aux23 = f.split(':') 
+                if(len(aux23)>1):
+                    modulos.append((aux23[0]+':')[:-1])
+                    instruccion.append(aux23[1].strip('\n'))
+                else:
+                    modulos.append((f.strip('\n'))[:-1])
+    except:
+        f = f.strip('\n')
+        print(f'La instrucción {f} no existe')
            
 archivo.close()
 validacion=0
 ex_call=False
 for inst in instruccion:
-    if (',' in inst)==True:
-        aux=inst.split(' ')
-        for j in range(len(aux)):
-            if aux[j]!='':
-                i=j
-                break
-    
-        op=(inst.split(' '))[j]
-        a=(((inst.split(' '))[j+1]).split(','))[0]
-        b=(((inst.split(' '))[j+1]).split(','))[1]
-    elif inst=='RET':
-        op=inst
-        a='NULL'
-        b='NULL'
-    else:
-        if inst!='':
+    exp=False
+    try:
+        if (',' in inst)==True:
             aux=inst.split(' ')
             for j in range(len(aux)):
                 if aux[j]!='':
                     i=j
                     break
+        
             op=(inst.split(' '))[j]
-            a=(inst.split(' '))[j+1]
+            a=(((inst.split(' '))[j+1]).split(','))[0]
+            b=(((inst.split(' '))[j+1]).split(','))[1]
+        elif inst=='RET':
+            op=inst
+            a='NULL'
             b='NULL'
+        else:
+            if inst!='':
+                aux=inst.split(' ')
+                for j in range(len(aux)):
+                    if aux[j]!='':
+                        i=j
+                        break
+                op=(inst.split(' '))[j]
+                a=(inst.split(' '))[j+1]
+                b='NULL'
+    except:
+        exp=True
+        print(f'La instrucción {inst} no existe')
+        
     a_par=0
     b_par=0
     if '(' in a:
@@ -308,7 +326,7 @@ for inst in instruccion:
         val=True
         
 
-    if val==False:
+    if val==False and exp==False:
         print(f'La instrucción {inst} no existe')
         validacion=1
 if validacion==0:
