@@ -1,0 +1,39 @@
+DATA:
+    inicio1 #A0
+    inicio2 #A1
+    n 5
+    auxi 0
+    auxb 0
+    pp 0
+
+CODE:
+siguiente:
+    MOV B,(inicio1)
+    MOV A,(B)
+    MOV B,(inicio2)
+    MOV (auxi),A
+    MOV (auxb),B
+    CMP A,0
+    JEQ move
+
+mult:
+    MOV B,A
+    MOV A,(auxi)
+    SUB A,1
+    JEQ move
+    MOV (auxi),A
+    MOV A,B
+    ADD A,(auxb)
+    JMP mult
+
+move:
+    MOV A,(pp)
+    ADD A,B
+    MOV (pp),A
+    MOV A,(n)
+    SUB A,1
+    MOV (n),A
+    INC (inicio1)
+    INC (inicio2)
+    CMP A,0
+    JGT siguiente
