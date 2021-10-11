@@ -1,0 +1,93 @@
+DATA:
+    inicio #A0
+    filas 3
+    cols 3
+    aux 0
+    contador 0
+    contr 0
+    contg 0
+    contb 0
+CODE:
+    CMP A,0
+    JEQ end
+    MOV (filas),A
+    MOV (cols),B
+    MOV A,B
+mult: 
+    MOV B,A
+    MOV A,(filas)
+    SUB A,1
+    JEQ move
+    MOV (filas),A
+    MOV A,B
+    ADD A,(cols)
+    JMP mult
+move: 
+    MOV A,B    
+    MOV (aux),A 
+cmp:
+    CMP B,(aux)
+    JEQ end
+    MOV B,(inicio)
+    MOV A,(B) //OJO
+    INC (inicio)
+    MOV B,(inicio)
+    CMP A,B
+    JLE cmpRB
+    CMP A,B
+    JEQ cmpRGB
+    MOV A,B
+    INC (inicio)
+    MOV B,(inicio)
+    CMP A,B
+    JLE aumG
+    CMP A,B 
+    JEQ aumGB
+    INC (contb)
+    JMP aumentar
+cmpRB:
+    INC (inicio)
+    MOV B,(inicio)
+    CMP A,B
+    JLE aumR 
+    CMP A,B 
+    JEQ aumRB
+    INC (contb)
+    JMP aumentar
+cmpRGB:
+    INC (inicio)
+    MOV B,(inicio)
+    CMP A,B
+    JLE aumRG
+    CMP A,B 
+    JEQ aumRGB
+    INC (contb)
+    JMP aumentar
+aumR:
+    INC (contr)
+    JMP aumentar
+aumRG:
+    INC (contr)
+    INC (contg)
+    JMP aumentar
+aumRB:
+    INC (contr)
+    INC (contb)
+    JMP aumentar
+aumG:
+    INC (contg)
+    JMP aumentar
+aumGB:
+    INC (contg)
+    INC (contb)
+    JMP aumentar
+aumRGB:
+    INC (contr)
+    INC (contg)
+    INC (contb)
+    JMP aumentar
+aumentar:
+    INC (contador)
+    MOV B,(contador)
+    JMP cmp
+end:
