@@ -12,7 +12,7 @@ def agregar_ceros(numero,op):
     return op
 #archivo=open('problema1.ass','r')
 #archivo=open('problema2.ass','r')
-name = "p3_1-correccion2"
+name = "p3_1-correccion1"
 archivo=open(name+'.ass','r')
 #archivo=open('p3-ej_correcto.ass','r')
 #archivo=open('p3-ej_incorrecto.ass','r')
@@ -92,6 +92,8 @@ archivo.close()
 cero='00000000'
 validacion=0
 ex_call=False
+
+
 if(codebool==True and databool==True): 
               
     for inst in instruccion:
@@ -165,10 +167,10 @@ if(codebool==True and databool==True):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0: #Parentesis en a
-                if (a in data) == True and b=='A':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit()))) and b=='A':
                     val=True
                     opcode='010011100000000'
-                elif (a in data) == True and b=='B':
+                elif ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit()))) and b=='B':
                     val = True
                     opcode='010100000000000'
                 elif a=='B' and b=='A':
@@ -190,10 +192,10 @@ if(codebool==True and databool==True):
                         opcode='010100000000000'
                     
             elif a_par==0 and b_par==1: #Parentesis en b
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='010010100000000'
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='010011000000000'
                 elif a=='A' and b=='B':
@@ -237,7 +239,7 @@ if(codebool==True and databool==True):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit()))) and b=='NULL':
                     val=True
                     opcode='0101111'+cero
                 elif(a.isdigit())==True and b=='NULL':
@@ -249,10 +251,10 @@ if(codebool==True and databool==True):
                         val=True
                         opcode='0101111'+cero
             elif a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0101100'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0101101'+cero
                 elif a=='A' and b.isdigit():
@@ -293,7 +295,7 @@ if(codebool==True and databool==True):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='0110011'+cero
                 elif (a.isdigit())==True and b=='NULL':
@@ -305,10 +307,10 @@ if(codebool==True and databool==True):
                         val=True
                         opcode='0110011'+cero
             elif a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0110000'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0110001'+cero
                 elif a=='A' and (b.isdigit())==True:
@@ -349,7 +351,7 @@ if(codebool==True and databool==True):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit()))) and b=='NULL':
                     val=True
                     opcode='0110111'+cero
                 elif (a.isdigit())==True and b=='NULL':
@@ -361,10 +363,10 @@ if(codebool==True and databool==True):
                         val=True
                         opcode='0110111'+cero
             elif a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0110100'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0110101'+cero
                 elif a=='A' and (b.isdigit())==True:
@@ -405,7 +407,7 @@ if(codebool==True and databool==True):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='0111011'+cero
                 elif (a.isdigit())==True and b=='NULL':
@@ -417,10 +419,10 @@ if(codebool==True and databool==True):
                         val=True
                         opcode='0111011'+cero
             elif a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0111000'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0111001'+cero
                 elif a=='A' and (b.isdigit())==True:
@@ -455,10 +457,10 @@ if(codebool==True and databool==True):
                     val=True
                     opcode='0010111'+cero
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='A':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='A':
                     val=True
                     opcode='0111100'+cero
-                elif (a in data)==True and b=='B':
+                elif ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='B':
                     val=True
                     opcode='0010101'+cero
                 elif (a.isdigit())==True and b=='A':
@@ -499,7 +501,7 @@ if(codebool==True and databool==True):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='1000010'+cero
                 elif (a.isdigit())==True and b=='NULL':
@@ -511,10 +513,10 @@ if(codebool==True and databool==True):
                         val=True
                         opcode='1000010'+cero
             elif a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0111111'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='1000000'+cero
                 elif a=='A' and (b.isdigit())==True:
@@ -550,10 +552,10 @@ if(codebool==True and databool==True):
                     val=True
                     opcode='0011111'+cero
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='A':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='A':
                     val=True
                     opcode='1000011'+cero
-                elif (a in data)==True and b=='B':
+                elif ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='B':
                     val=True
                     opcode='1000100'+cero
                 elif a.isdigit() and b=='A':
@@ -588,10 +590,10 @@ if(codebool==True and databool==True):
                     val=True
                     opcode='0100011'+cero
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='A':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='A':
                     val=True
                     opcode='1000110'+cero
-                elif (a in data)==True and b=='B':
+                elif ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='B':
                     val=True
                     opcode='1000111'+cero
                 elif (a.isdigit())==True and b=='A':
@@ -616,7 +618,7 @@ if(codebool==True and databool==True):
                 val=True
                 opcode='0100100'+cero
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='1001001'+cero
                 elif (a.isdigit())==True and b=='NULL':
@@ -632,7 +634,7 @@ if(codebool==True and databool==True):
                         opcode='1001001'+cero
         elif op=='RST':
             if a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='1001011'+cero
                 elif a.isdigit() and b=='NULL':
@@ -664,10 +666,10 @@ if(codebool==True and databool==True):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             if a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='1010000'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='1010001'+cero
                 elif a=='A' and (b.isdigit()):
@@ -808,10 +810,10 @@ elif(codebool==False and databool==False):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0: #Parentesis en a
-                if (a in data) == True and b=='A':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit()))) and b=='A':
                     val=True
                     opcode='010011100000000'
-                elif (a in data) == True and b=='B':
+                elif ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='B':
                     val = True
                     opcode='010100000000000'
                 elif a=='B' and b=='A':
@@ -833,10 +835,10 @@ elif(codebool==False and databool==False):
                         opcode='010100000000000'
                     
             elif a_par==0 and b_par==1: #Parentesis en b
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='010010100000000'
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='010011000000000'
                 elif a=='A' and b=='B':
@@ -880,7 +882,7 @@ elif(codebool==False and databool==False):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='0101111'+cero
                 elif(a.isdigit())==True and b=='NULL':
@@ -892,10 +894,10 @@ elif(codebool==False and databool==False):
                         val=True
                         opcode='0101111'+cero
             elif a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0101100'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0101101'+cero
                 elif a=='A' and b.isdigit():
@@ -936,7 +938,7 @@ elif(codebool==False and databool==False):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='0110011'+cero
                 elif (a.isdigit())==True and b=='NULL':
@@ -948,10 +950,10 @@ elif(codebool==False and databool==False):
                         val=True
                         opcode='0110011'+cero
             elif a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0110000'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0110001'+cero
                 elif a=='A' and (b.isdigit())==True:
@@ -992,7 +994,7 @@ elif(codebool==False and databool==False):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='0110111'+cero
                 elif (a.isdigit())==True and b=='NULL':
@@ -1004,10 +1006,10 @@ elif(codebool==False and databool==False):
                         val=True
                         opcode='0110111'+cero
             elif a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0110100'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0110101'+cero
                 elif a=='A' and (b.isdigit())==True:
@@ -1048,7 +1050,7 @@ elif(codebool==False and databool==False):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='0111011'+cero
                 elif (a.isdigit())==True and b=='NULL':
@@ -1060,10 +1062,10 @@ elif(codebool==False and databool==False):
                         val=True
                         opcode='0111011'+cero
             elif a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0111000'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0111001'+cero
                 elif a=='A' and (b.isdigit())==True:
@@ -1098,10 +1100,10 @@ elif(codebool==False and databool==False):
                     val=True
                     opcode='0010111'+cero
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='A':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='A':
                     val=True
                     opcode='0111100'+cero
-                elif (a in data)==True and b=='B':
+                elif ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='B':
                     val=True
                     opcode='0010101'+cero
                 elif (a.isdigit())==True and b=='A':
@@ -1142,7 +1144,7 @@ elif(codebool==False and databool==False):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='1000010'+cero
                 elif (a.isdigit())==True and b=='NULL':
@@ -1154,10 +1156,10 @@ elif(codebool==False and databool==False):
                         val=True
                         opcode='1000010'+cero
             elif a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='0111111'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='1000000'+cero
                 elif a=='A' and (b.isdigit())==True:
@@ -1193,10 +1195,10 @@ elif(codebool==False and databool==False):
                     val=True
                     opcode='0011111'+cero
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='A':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='A':
                     val=True
                     opcode='1000011'+cero
-                elif (a in data)==True and b=='B':
+                elif ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='B':
                     val=True
                     opcode='1000100'+cero
                 elif a.isdigit() and b=='A':
@@ -1231,10 +1233,10 @@ elif(codebool==False and databool==False):
                     val=True
                     opcode='0100011'+cero
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='A':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='A':
                     val=True
                     opcode='1000110'+cero
-                elif (a in data)==True and b=='B':
+                elif ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='B':
                     val=True
                     opcode='1000111'+cero
                 elif (a.isdigit())==True and b=='A':
@@ -1259,7 +1261,7 @@ elif(codebool==False and databool==False):
                 val=True
                 opcode='0100100'+cero
             elif a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit()))) and b=='NULL':
                     val=True
                     opcode='1001001'+cero
                 elif (a.isdigit())==True and b=='NULL':
@@ -1275,7 +1277,7 @@ elif(codebool==False and databool==False):
                         opcode='1001001'+cero
         elif op=='RST':
             if a_par==1 and b_par==0:
-                if (a in data)==True and b=='NULL':
+                if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
                     opcode='1001011'+cero
                 elif a.isdigit() and b=='NULL':
@@ -1307,10 +1309,10 @@ elif(codebool==False and databool==False):
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
             if a_par==0 and b_par==1:
-                if a=='A' and (b in data)==True:
+                if a=='A' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='1010000'+cero
-                elif a=='B' and (b in data)==True:
+                elif a=='B' and ((b in data)==True or (((b[0] == '#') and b[1]!='#') or (b.isdigit()))):
                     val=True
                     opcode='1010001'+cero
                 elif a=='A' and (b.isdigit()):
