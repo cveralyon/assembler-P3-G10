@@ -12,7 +12,7 @@ def agregar_ceros(numero,op):
     return op
 #archivo=open('problema1.ass','r')
 #archivo=open('problema2.ass','r')
-name = "problema4"
+name = "p3_2-correccion2"
 archivo=open(name+'.ass','r')
 #archivo=open('p3-ej_correcto.ass','r')
 #archivo=open('p3-ej_incorrecto.ass','r')
@@ -69,27 +69,28 @@ for f in archivo:
             if(f!='' and f.find('DATA')==-1):
                 if (codebool==False and databool==False): 
                     instruccion.append(f.strip().strip('\n')+'&'+str(fila))
-                if(data[variable[j]][0]=='#'):
-                    hex=data[variable[j]][1:]
-                    if data[variable[j]][1]=='#':
-                        f = f.strip('\n')
-                        print(f'En la fila {fila} la instrucción {f} no existe')
-                        validacion=1
-                    if ((int(hex, 16)>255) or (a.isdigit() and a<0 and a>255)):
-                        print(f'En la fila {fila} la instrucción {f} no existe')
-                        validacion=1
-                elif f.find(':')==-1 and f!='':                
-                    instruccion.append(f.strip().strip('\n')+'&'+str(fila))
-                
-                elif f.find(':')!=-1 and f.find('CODE')==-1 and f.find('DATA')==-1:
-                    aux23 = f.split(':') 
-                    if(aux23[1]==''):
-                        aux23.remove(aux23[1])
-                    if(len(aux23)>1):
-                        modulos.append((aux23[0]+':')[:-1])
-                        instruccion.append(aux23[1].strip().strip('\n')+'&'+str(fila))
-                    else:
-                        modulos.append((f.strip().strip('\n'))[:-1])
+                if(len(data)!=0):
+                    if(data[variable[j]][0]=='#'):
+                        hex=data[variable[j]][1:]
+                        if data[variable[j]][1]=='#':
+                            f = f.strip('\n')
+                            print(f'En la fila {fila} la instrucción {f} no existe')
+                            validacion=1
+                        if ((int(hex, 16)>255) or (a.isdigit() and a<0 and a>255)):
+                            print(f'En la fila {fila} la instrucción {f} no existe')
+                            validacion=1
+                    elif f.find(':')==-1 and f!='':                
+                        instruccion.append(f.strip().strip('\n')+'&'+str(fila))
+                    
+                    elif f.find(':')!=-1 and f.find('CODE')==-1 and f.find('DATA')==-1:
+                        aux23 = f.split(':') 
+                        if(aux23[1]==''):
+                            aux23.remove(aux23[1])
+                        if(len(aux23)>1):
+                            modulos.append((aux23[0]+':')[:-1])
+                            instruccion.append(aux23[1].strip().strip('\n')+'&'+str(fila))
+                        else:
+                            modulos.append((f.strip().strip('\n'))[:-1])
     except:
         f = f.strip('\n')
         if(f!=''):
@@ -1163,13 +1164,13 @@ elif(codebool==False and databool==False):
                 elif a=='B' and b=='A':
                     val=True
                     opcode='0011001'+cero
-                elif a=='A' and (b.isdigit()):
+                elif a=='A' and (b.lstrip('-').isdigit()):
                     val=True
                     opcode='0011010'
                     binario=str(bin(int(b))[2:])
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
-                elif a=='B' and (b.isdigit()):
+                elif a=='B' and (b.lstrip('-').isdigit()):
                     val=True
                     opcode='0011011'
                     binario=str(bin(int(b))[2:])
