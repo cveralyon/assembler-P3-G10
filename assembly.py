@@ -12,7 +12,7 @@ def agregar_ceros(numero,op):
     return op
 #archivo=open('problema1.ass','r')
 #archivo=open('problema2.ass','r')
-name = "p3_1-correccion1"
+name = "problema4"
 archivo=open(name+'.ass','r')
 #archivo=open('p3-ej_correcto.ass','r')
 #archivo=open('p3-ej_incorrecto.ass','r')
@@ -60,7 +60,7 @@ for f in archivo:
                     if data[variable[j]][1]=='#':
                         f = f.strip('\n')
                         print(f'En la fila {fila} la instrucción {f} no existe')
-                    if ((int(hex, 16)<=255) or (a.isdigit() and a<0 and a>255)):
+                    if ((int(hex, 16)>255) or (a.isdigit() and a<0 and a>255)):
                         print(f'En la fila {fila} la instrucción {f} no existe')
 
                         
@@ -154,15 +154,25 @@ if(codebool==True and databool==True):
                 elif a=='B' and b=='A':
                     val=True
                     opcode='000000100000000'
-                elif a=='A' and (b.isdigit()):
+                elif a=='A' and (b.isdigit() or b in data):
                     val=True
                     opcode='0000010'
+                    if(not b.isdigit()):
+                        b=data[b]
+                        if(b[0]=='#'):
+                            b=b[1:]
+                            b=int(b, 16)
                     binario=str(bin(int(b))[2:])
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
-                elif a=='B' and (b.isdigit()):
+                elif a=='B' and (b.isdigit() or b in data):
                     val=True
                     opcode='0000011'
+                    if(not b.isdigit()):
+                        b=data[b]
+                        if(b[0]=='#'):
+                            b=b[1:]
+                            b=int(b, 16)
                     binario=str(bin(int(b))[2:])
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
@@ -797,15 +807,25 @@ elif(codebool==False and databool==False):
                 elif a=='B' and b=='A':
                     val=True
                     opcode='000000100000000'
-                elif a=='A' and (b.isdigit()):
+                elif a=='A' and (b.isdigit() or b in data):
                     val=True
                     opcode='0000010'
+                    if(not b.isdigit()):
+                        b=data[b]
+                        if(b[0]=='#'):
+                            b=b[1:]
+                            b=int(b, 16)
                     binario=str(bin(int(b))[2:])
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
-                elif a=='B' and (b.isdigit()):
+                elif a=='B' and (b.isdigit() or b in data):
                     val=True
                     opcode='0000011'
+                    if(not b.isdigit()):
+                        b=data[b]
+                        if(b[0]=='#'):
+                            b=b[1:]
+                            b=int(b, 16)
                     binario=str(bin(int(b))[2:])
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
