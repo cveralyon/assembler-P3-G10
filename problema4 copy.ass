@@ -3,8 +3,8 @@ DATA:
     largo 5
     valor1 0
     aux1 0
-    mem1 0
-    mem2 0
+    mem1 #00
+    mem2 #00
 CODE:
     MOV B,largo
     MOV (aux1),B
@@ -12,20 +12,19 @@ CODE:
 subir:
     MOV (mem1),B // #A0 aqui esta A
     INC B
-    MOV (mem2),B  // #A1 aqui esta valor1
+    MOV (mem2),B // #A1 aqui esta valor1
     MOV A,(B)
     MOV (valor1),A
     MOV B,(mem1)
     MOV A,(B)
-    CMP A,(valor1)  // si A mayor a valor1 se intercambia
+    CMP A,(valor1) // si A mayor a valor1 se intercambia
     JLE siguiente1
     MOV B,largo
     MOV (aux1),B
-    MOV B,valor1  // en la memoria donde estaba A pongo valor1
-    MOV (mem1),B
-    MOV (mem2),A // en la memoria donde estaba valor1 pongo A
-    INC mem1 // #A2
-    INC mem2 // #A3
+    MOV (mem1),valor1 // en la memoria donde estaba A pongo valor1
+    MOV (mem2),A  // en la memoria donde estaba valor1 pongo A
+    MOV mem1,mem2
+    INC mem2 // #A2
     JMP subir
 siguiente1:
     MOV B,(aux1)
@@ -38,4 +37,16 @@ seguir:
     INC mem1
     INC mem2
     JMP subir
-end:  
+end:
+
+
+
+
+
+siguiente1:
+    
+
+
+
+
+    

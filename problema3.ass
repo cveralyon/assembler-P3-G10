@@ -10,8 +10,8 @@ DATA:
 CODE:
     CMP A,0
     JEQ end
-    MOV (filas),A
-    MOV (cols),B
+    MOV A,(filas)
+    MOV B,(cols)
     MOV A,B
 mult: 
     MOV B,A
@@ -29,7 +29,7 @@ cmp:
     CMP B,(aux)
     JEQ end
     MOV B,(inicio)
-    MOV A,(B) //OJO
+    MOV A,(B)
     INC (inicio)
     MOV B,(inicio)
     CMP A,B

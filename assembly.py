@@ -66,10 +66,18 @@ for f in archivo:
                         
                     
         else:
-            if(f!=''):
+            if(f!='' and f.find('DATA')==-1):
                 if (codebool==False and databool==False): 
                     instruccion.append(f.strip().strip('\n')+'&'+str(fila))
-                
+                if(data[variable[j]][0]=='#'):
+                    hex=data[variable[j]][1:]
+                    if data[variable[j]][1]=='#':
+                        f = f.strip('\n')
+                        print(f'En la fila {fila} la instrucción {f} no existe')
+                        validacion=1
+                    if ((int(hex, 16)>255) or (a.isdigit() and a<0 and a>255)):
+                        print(f'En la fila {fila} la instrucción {f} no existe')
+                        validacion=1
                 elif f.find(':')==-1 and f!='':                
                     instruccion.append(f.strip().strip('\n')+'&'+str(fila))
                 
@@ -86,6 +94,7 @@ for f in archivo:
         f = f.strip('\n')
         if(f!=''):
             print(f'En la fila {fila} la instrucción {f} no existe')
+            validacion=1
            
 archivo.close()
 
@@ -133,7 +142,9 @@ if(codebool==True and databool==True):
             exp=True
             if (inst!=''):
                 print(f'En la fila {fila} la instrucción {inst} no existe')
+                validacion=1
             
+
         a_par=0
         b_par=0
         if '(' in a:
@@ -786,6 +797,7 @@ elif(codebool==False and databool==False):
             exp=True
             if (inst!=''):
                 print(f'En la fila {fila} la instrucción {inst} no existe')
+                validacion=1
             
         a_par=0
         b_par=0
