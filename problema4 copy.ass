@@ -10,21 +10,21 @@ CODE:
     MOV (aux1),B
     MOV B,(inicio)
 subir:
-    MOV (mem1),B 
+    MOV (mem1),B // #A0 aqui esta A
     INC B
-    MOV (mem2),B
+    MOV (mem2),B // #A1 aqui esta valor1
     MOV A,(B)
     MOV (valor1),A
     MOV B,(mem1)
     MOV A,(B)
-    CMP A,(valor1) 
+    CMP A,(valor1) // si A mayor a valor1 se intercambia
     JLE siguiente1
     MOV B,largo
     MOV (aux1),B
-    MOV (mem1),valor1
-    MOV (mem2),A
+    MOV (mem1),valor1 // en la memoria donde estaba A pongo valor1
+    MOV (mem2),A  // en la memoria donde estaba valor1 pongo A
     MOV mem1,mem2
-    INC mem2
+    INC mem2 // #A2
     JMP subir
 siguiente1:
     MOV B,(aux1)
@@ -38,3 +38,15 @@ seguir:
     INC mem2
     JMP subir
 end:
+
+
+
+
+
+siguiente1:
+    
+
+
+
+
+    

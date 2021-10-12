@@ -12,7 +12,8 @@ def agregar_ceros(numero,op):
     return op
 #archivo=open('problema1.ass','r')
 #archivo=open('problema2.ass','r')
-name = "p3_1-correccion1"
+#name = "p3_1-correccion1"
+name='problema3'
 archivo=open(name+'.ass','r')
 #archivo=open('p3-ej_correcto.ass','r')
 #archivo=open('p3-ej_incorrecto.ass','r')
@@ -55,21 +56,23 @@ for f in archivo:
             variable=f.strip().split(' ')
             if len(f)>1:
                 data[variable[j]]=(variable[j+1].strip('\n'))
+                
+
+                        
+                    
+        else:
+            if(f!='' and f.find('DATA')==-1):
+                if (codebool==False and databool==False): 
+                    instruccion.append(f.strip().strip('\n')+'&'+str(fila))
                 if(data[variable[j]][0]=='#'):
                     hex=data[variable[j]][1:]
                     if data[variable[j]][1]=='#':
                         f = f.strip('\n')
                         print(f'En la fila {fila} la instrucción {f} no existe')
-                    if ((int(hex, 16)<=255) or (a.isdigit() and a<0 and a>255)):
+                        validacion=1
+                    if ((int(hex, 16)>255) or (a.isdigit() and a<0 and a>255)):
                         print(f'En la fila {fila} la instrucción {f} no existe')
-
-                        
-                    
-        else:
-            if(f!=''):
-                if (codebool==False and databool==False): 
-                    instruccion.append(f.strip().strip('\n')+'&'+str(fila))
-                
+                        validacion=1
                 elif f.find(':')==-1 and f!='':                
                     instruccion.append(f.strip().strip('\n')+'&'+str(fila))
                 
@@ -86,6 +89,7 @@ for f in archivo:
         f = f.strip('\n')
         if(f!=''):
             print(f'En la fila {fila} la instrucción {f} no existe')
+            validacion=1
            
 archivo.close()
 
@@ -133,7 +137,9 @@ if(codebool==True and databool==True):
             exp=True
             if (inst!=''):
                 print(f'En la fila {fila} la instrucción {inst} no existe')
+                validacion=1
             
+
         a_par=0
         b_par=0
         if '(' in a:
@@ -776,6 +782,7 @@ elif(codebool==False and databool==False):
             exp=True
             if (inst!=''):
                 print(f'En la fila {fila} la instrucción {inst} no existe')
+                validacion=1
             
         a_par=0
         b_par=0
