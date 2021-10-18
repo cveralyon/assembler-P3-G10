@@ -1,39 +1,3 @@
-
-def partida_lista (inst):
-    aux=inst.strip().split(' ')
-    for j in range(len(aux)):
-        if aux[j]!='':
-            i=j
-            break
-    return i
-def agregar_ceros(numero,op):
-    for x in range(numero):
-        op+='0'
-    return op
-          
-
-name = "Pruebas/p3_2-correccion2"
-archivo=open(name+'.ass','r')
-
-
-auxA=0
-a=''
-b=''
-op=''
-codebool=False
-databool=False
-paso1 = False
-paso2 = False
-data={}
-instruccion=[]
-modulos=[]
-fila=0
-cero='00000000'
-validacion=0
-ex_call=False
-output_arch=open(name+'.out','w')
-def assembler_func():
-    global validacion
     for inst in instruccion:
         l = inst.split('&')
         inst=l[0]
@@ -84,7 +48,7 @@ def assembler_func():
             b=b[1:]
             b=b[:-1]
         val=False #validacion
-
+        
         if (op=='MOV'):
             if a_par+b_par==0: #No Hay Parentésis
                 if a=='A' and b=='B':
@@ -484,7 +448,8 @@ def assembler_func():
                         opcode='0111111'+cero
                     elif a=='B' and (int(b, 16)<=255):
                         val=True
-                        opcode='1000000'+cero             
+                        opcode='1000000'+cero
+                      
         elif op=='SHL':
             if a_par+b_par==0:
                 if a=='A' and b=='A':
@@ -683,86 +648,3 @@ def assembler_func():
             validacion=1
         elif(val==True and (inst!='')):
             output_arch.write(opcode+'\n')
-  
-
-for f in archivo:
-    fila=fila+1
-    f = f.strip()
-    f = f.strip('\n')
-    #print(f)
-    try:
-        if('DATA' in f) and paso1!=True:
-            databool=True
-            paso1=True
-        if('CODE' in f) and paso2!=True:
-            codebool=True
-            paso1=True
-        if f.find('CODE')!=-1:
-            auxA=1
-            
-        if ((auxA==0 and f.find('DATA')==-1) and (codebool==True or databool==True)):
-            
-            j=partida_lista(f)
-            variable=f.strip().split(' ')
-            if len(f)>1:
-                data[variable[j]]=(variable[j+1].strip('\n'))
-                if(data[variable[j]][0]=='#'):
-                    hex=data[variable[j]][1:]
-                    if data[variable[j]][1]=='#':
-                        f = f.strip('\n')
-                        print(f'En la fila {fila} la instrucción {f} no existe')
-                    if ((int(hex, 16)>255) or (a.isdigit() and a<0 and a>255)):
-                        print(f'En la fila {fila} la instrucción {f} no existe')
-
-                        
-                    
-        else:
-            if(f!='' and f.find('DATA')==-1):
-                if (codebool==False and databool==False): 
-                    instruccion.append(f.strip().strip('\n')+'&'+str(fila))
-                if(len(data)!=0):
-                    if(data[variable[j]][0]=='#'):
-                        hex=data[variable[j]][1:]
-                        if data[variable[j]][1]=='#':
-                            f = f.strip('\n')
-                            print(f'En la fila {fila} la instrucción {f} no existe')
-                            validacion=1
-                        if ((int(hex, 16)>255) or (a.isdigit() and a<0 and a>255)):
-                            print(f'En la fila {fila} la instrucción {f} no existe')
-                            validacion=1
-                    elif f.find(':')==-1 and f!='':                
-                        instruccion.append(f.strip().strip('\n')+'&'+str(fila))
-                    
-                    elif f.find(':')!=-1 and f.find('CODE')==-1 and f.find('DATA')==-1:
-                        aux23 = f.split(':') 
-                        if(aux23[1]==''):
-                            aux23.remove(aux23[1])
-                        if(len(aux23)>1):
-                            modulos.append((aux23[0]+':')[:-1])
-                            instruccion.append(aux23[1].strip().strip('\n')+'&'+str(fila))
-                        else:
-                            modulos.append((f.strip().strip('\n'))[:-1])
-    except:
-        f = f.strip('\n')
-        if(f!=''):
-            print(f'En la fila {fila} la instrucción {f} no existe')
-            validacion=1
-           
-archivo.close()
-
-
-
-if(codebool==True and databool==True):
-    assembler_func()
-elif(codebool==False and databool==False):
-    assembler_func()
-     
-output_arch.close()
-if validacion==0:
-    print('Son todas las instrucciones correctas')
-else:
-    output_arch=open(name+'.casi','w')
-    output_arch.close()
-
-
-    
