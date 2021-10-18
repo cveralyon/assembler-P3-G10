@@ -10,9 +10,32 @@ def agregar_ceros(numero,op):
     for x in range(numero):
         op+='0'
     return op
+          
+
+name = "Pruebas/p3_2-correccion2"
+archivo=open(name+'.ass','r')
+
+
+auxA=0
+a=''
+b=''
+op=''
+codebool=False
+databool=False
+paso1 = False
+paso2 = False
+data={}
+instruccion=[]
+modulos=[]
+fila=0
+cero='00000000'
+validacion=0
+ex_call=False
+output_arch=open(name+'.out','w')
 def assembler_func():
-        for inst in instruccion:
-            l = inst.split('&')
+    global validacion
+    for inst in instruccion:
+        l = inst.split('&')
         inst=l[0]
         fila=l[1]
         inst = inst.strip()
@@ -61,7 +84,7 @@ def assembler_func():
             b=b[1:]
             b=b[:-1]
         val=False #validacion
-        
+
         if (op=='MOV'):
             if a_par+b_par==0: #No Hay Parentésis
                 if a=='A' and b=='B':
@@ -461,8 +484,7 @@ def assembler_func():
                         opcode='0111111'+cero
                     elif a=='B' and (int(b, 16)<=255):
                         val=True
-                        opcode='1000000'+cero
-                      
+                        opcode='1000000'+cero             
         elif op=='SHL':
             if a_par+b_par==0:
                 if a=='A' and b=='A':
@@ -661,31 +683,8 @@ def assembler_func():
             validacion=1
         elif(val==True and (inst!='')):
             output_arch.write(opcode+'\n')
-            
-#archivo=open('problema1.ass','r')
-#archivo=open('problema2.ass','r')
-name = "p3_2-correccion2"
-archivo=open(name+'.ass','r')
-#archivo=open('p3-ej_correcto.ass','r')
-#archivo=open('p3-ej_incorrecto.ass','r')
-#archivo=open('p3F_1Corr.ass','r')
-#archivo=open('p3F_1v2Corr.ass','r')
-#archivo=open('p3F_2inCorr.ass','r')
-#archivo=open('p3_1-correccion1.ass','r')
-#archivo=open('p3_1-correccion2.ass','r')
-output_arch=open(name+'.out','w')
-auxA=0
-a=''
-b=''
-op=''
-codebool=False
-databool=False
-paso1 = False
-paso2 = False
-data={}
-instruccion=[]
-modulos=[]
-fila=0
+  
+
 for f in archivo:
     fila=fila+1
     f = f.strip()
@@ -751,9 +750,7 @@ for f in archivo:
            
 archivo.close()
 
-cero='00000000'
-validacion=0
-ex_call=False
+
 
 if(codebool==True and databool==True):
     assembler_func()
@@ -764,7 +761,7 @@ output_arch.close()
 if validacion==0:
     print('Son todas las instrucciones correctas')
 else:
-    output_arch=open(name+'.out','w')
+    output_arch=open(name+'.casi','w')
     output_arch.close()
 
 
