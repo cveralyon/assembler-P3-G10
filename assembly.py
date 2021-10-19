@@ -12,7 +12,7 @@ def agregar_ceros(numero,op):
     return op
           
 
-name = "Pruebas/p3_2-correccion2"
+name = "Pruebas/p3_2-correccion1"
 archivo=open(name+'.ass','r')
 
 

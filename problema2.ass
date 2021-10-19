@@ -1,38 +1,25 @@
 DATA:
-  inicio #A0
-  largo 5
-  res 0
-  aux1 0
-  aux2 0
+    inicio #A0
+    largo 5
+    res 1
+    mem1 0
+    mem2 0
+    valor1 0
 CODE:
-siguiente:
-  MOV A,(inicio)
-  MOV (aux1),A
-  MOV B,(largo)
-ultimo:
-  CMP B,0
-  JGT comparar
-  ADD A,1
-  SUB B,1
-  JMP ultimo
+    MOV B,(inicio)
+    MOV (mem1),B
+    ADD B,largo
+    MOV (mem2),B
 comparar:
-  MOV B,A
-  MOV A,(aux1) 
-  CMP A,B 
-  JGT disminuir
-  MOV A,0
-  MOV (res),A
-  JMP end
-disminuir:
-  MOV A,(aux1)
-  ADD A,1
-  MOV (aux1),A
-  MOV B,(aux2)
-  SUB B,1
-  MOV (aux2),B
-  CMP A,B
-  JNE ultimo
-  MOV A,1
-  MOV (res),A
-  JMP end
+    MOV B,(mem1)
+    MOV A,(B)
+    MOV (valor1),A
+    MOV B,(mem2)
+    MOV A,(B)
+    CMP A,(valor1)
+    JNE end
+    INC mem1
+    SUB mem2,1
+    JMP comparar
 end:
+    res 0

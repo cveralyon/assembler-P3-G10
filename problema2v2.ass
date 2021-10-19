@@ -1,0 +1,25 @@
+DATA:
+    inicio #A0
+    largo 5
+    res 1
+    mem1 0
+    mem2 0
+    valor1 0
+CODE:
+    MOV B,(inicio)
+    MOV (mem1),B    // en mem1 tengo la memoria a la primera letra
+    ADD B,largo    // ahora B apunta a la memoria de la ultima letra de la palabra 
+    MOV (mem2),B         #guardo en mem2
+comparar:
+    MOV B,(mem1)
+    MOV A,(B) 
+    MOV (valor1),A  // aqui tengo la primera letra
+    MOV B,(mem2)
+    MOV A,(B)       // aqui tengo la ultima letra
+    CMP A,(valor1)  //comparo que sean iguales
+    JNE end         // si no lo son termina ya que ya no es palindromo
+    INC mem1
+    SUB mem2,1
+    JMP comparar
+end:
+    res 0
