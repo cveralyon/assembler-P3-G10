@@ -22,5 +22,7 @@ comparar:
     SUB mem2,1
     CMP mem1, mem2
     JNE comparar
+    JMP end2
 end:
     res 0
+end2:
