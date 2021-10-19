@@ -1,0 +1,42 @@
+DATA:
+	inicio #A0
+	largo 5
+	res 0
+	aux1 0
+	aux2 0
+
+CODE:
+  siguiente:
+	MOV A,(inicio)    
+	MOV B,(largo)
+	INC B	     
+	MOV (aux1),A
+	MOV (aux2),B
+	MOV A,1
+	MOV (res),A
+	MOV B,0       
+  ciclo:
+	MOV A,(aux1)	
+	MOV B,(aux2)
+	CMP A,B
+	JGE end
+	MOV B,A
+	MOV A,(B)
+	MOV B,(aux2)
+	MOV B,(B)
+	CMP A,B
+	JEQ incrementar
+	MOV A,0
+	MOV (res),A
+	JMP end
+	
+  incrementar:
+	MOV A,(aux1)
+	ADD A,1
+	MOV (aux1),A
+	MOV B,(aux2)
+	SUB B,1
+	MOV (aux2),B
+	JMP ciclo
+  end:	
+	
