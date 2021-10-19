@@ -20,6 +20,7 @@ comparar:
     JNE end
     INC mem1
     SUB mem2,1
-    JMP comparar
+    CMP mem1, mem2
+    JNE comparar
 end:
     res 0
