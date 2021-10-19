@@ -568,14 +568,14 @@ def assembler_func():
                     binario=str(bin(int(b))[2:])
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
-                    opcode=opcode.replace('b','-')
+                    opcode=opcode.replace('b','1')
                 elif a=='B' and (b.lstrip('-').isdigit()):
                     val=True
                     opcode='0011011'
                     binario=str(bin(int(b))[2:])
                     opcode=agregar_ceros(8-len(binario),opcode)
                     opcode+=binario
-                    opcode=opcode.replace('b','-')
+                    opcode=opcode.replace('b','1')
             elif a_par==1 and b_par==0:
                 if ((a in data) == True or (((a[0] == '#') and a[1]!='#') or (a.isdigit())))  and b=='NULL':
                     val=True
