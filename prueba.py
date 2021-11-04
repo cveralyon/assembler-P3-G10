@@ -13,7 +13,7 @@ if (a in modulos)==False:
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -29,7 +29,7 @@ if (b in modulos)==False:
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:

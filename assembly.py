@@ -12,7 +12,7 @@ def agregar_ceros(numero,op):
     return op
           
 
-name = "Pruebas/p3_2-correccion1"
+name = "Pruebas/p3F_2inCorr"
 archivo=open(name+'.ass','r')
 
 
@@ -84,7 +84,7 @@ def assembler_func():
             b=b[1:]
             b=b[:-1]
         val=False #validacion
-
+        dec=0
         if (op=='MOV'):
             if a_par+b_par==0: #No Hay Parentésis
                 if a=='A' and b=='B':
@@ -123,7 +123,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -140,7 +140,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -161,7 +161,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -178,7 +178,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -222,7 +222,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -240,7 +240,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -257,7 +257,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -298,7 +298,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -316,7 +316,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -333,7 +333,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -375,7 +375,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -394,7 +394,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -411,7 +411,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -452,7 +452,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -470,7 +470,8 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
+                            
                         else:
                             dec=int(b)
                         if dec >255:
@@ -487,7 +488,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -523,7 +524,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -540,7 +541,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -584,7 +585,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -602,7 +603,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -619,7 +620,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -655,7 +656,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -672,7 +673,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -708,7 +709,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -725,7 +726,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -751,7 +752,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -773,7 +774,7 @@ def assembler_func():
                         if a.isdigit()==False:
                             if a[0]=='#':
                                 a=a.split('#')[1]
-                            dec = int(a, 16)
+                                dec = int(a, 16)
                         else:
                             dec=int(a)
                         if dec >255:
@@ -812,7 +813,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -829,7 +830,7 @@ def assembler_func():
                         if b.isdigit()==False:
                             if b[0]=='#':
                                 b=b.split('#')[1]
-                            dec = int(b, 16)
+                                dec = int(b, 16)
                         else:
                             dec=int(b)
                         if dec >255:
@@ -849,7 +850,7 @@ def assembler_func():
                 if a.isdigit()==False:
                     if a[0]=='#':
                         k=a.split('#')[1]
-                    dec = int(k, 16)
+                        dec = int(k, 16)
                 else:
                     dec=int(a)
                 if dec > 255:
@@ -865,7 +866,7 @@ def assembler_func():
                 if a.isdigit()==False:
                     if a[0]=='#':
                         a=a.split('#')[1]
-                    dec = int(a, 16)
+                        dec = int(a, 16)
                 else:
                     dec=int(a)
                 if dec >255:
@@ -881,10 +882,10 @@ def assembler_func():
                 if a.isdigit()==False:
                     if a[0]=='#':
                         a=a.split('#')[1]
-                    dec = int(a, 16)
+                        dec = int(a, 16)
                 else:
                     dec=int(a)
-                print(dec)
+                #print(dec)
                 if dec >255:
                     val=False
                 else:
@@ -898,7 +899,7 @@ def assembler_func():
                 if a.isdigit()==False:
                     if a[0]=='#':
                         a=a.split('#')[1]
-                    dec = int(a, 16)
+                        dec = int(a, 16)
                 else:
                     dec=int(a)
                 if dec >255:
@@ -914,7 +915,7 @@ def assembler_func():
                 if a.isdigit()==False:
                     if a[0]=='#':
                         a=a.split('#')[1]
-                    dec = int(a, 16)
+                        dec = int(a, 16)
                 else:
                     dec=int(a)
                 if dec >255:
@@ -930,7 +931,7 @@ def assembler_func():
                 if a.isdigit()==False:
                     if a[0]=='#':
                         a=a.split('#')[1]
-                    dec = int(a, 16)
+                        dec = int(a, 16)
                 else:
                     dec=int(a)
                 if dec >255:
@@ -946,7 +947,7 @@ def assembler_func():
                 if a.isdigit()==False:
                     if a[0]=='#':
                         a=a.split('#')[1]
-                    dec = int(a, 16)
+                        dec = int(a, 16)
                 else:
                     dec=int(a)
                 if dec >255:
@@ -962,7 +963,7 @@ def assembler_func():
                 if a.isdigit()==False:
                     if a[0]=='#':
                         a=a.split('#')[1]
-                    dec = int(a, 16)
+                        dec = int(a, 16)
                 else:
                     dec=int(a)
                 if dec >255:
@@ -977,7 +978,7 @@ def assembler_func():
                 if a.isdigit()==False:
                     if a[0]=='#':
                         a=a.split('#')[1]
-                    dec = int(a, 16)
+                        dec = int(a, 16)
                 else:
                     dec=int(a)
                 if dec >255:
@@ -1002,7 +1003,7 @@ def assembler_func():
             opcode='1011111'+cero
             
         if (val==False and exp==False) and (inst!=''):
-            print(val)
+            #print(val)
             print(f'En la fila {fila} la instrucción {inst} no existe')
             validacion=1
         elif(val==True and (inst!='')):
